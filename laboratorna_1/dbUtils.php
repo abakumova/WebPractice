@@ -4,9 +4,10 @@ function runQuery($sql) {
     $user = "root";
     $password = "";
     $database = "laba1";
-    $conn = new mysqli($servername, $user, $password, $database);
+    $conn = new mysqli($servername, $user,$password, $database);
+
     if ($conn->connect_error) {
-        die('Something went wrong! Try again, please.');
+        die('Something went wrong! dbutils.');
     }
     $result = $conn->query($sql);
     mysqli_close($conn);

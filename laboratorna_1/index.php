@@ -61,7 +61,8 @@ session_start();
     if ($conn->connect_error) {
         die('Oops, something went wrong! Try again, please.');
     }
-    $sql = "SELECT (id, first_name, last_name, email) FROM users WHERE role_id = 2;";
+    $sql = "SELECT `users`.`id`, `users`.`first_name`, `users`.`last_name`, `users`.`email`, `roles`.`title`
+FROM `users` LEFT JOIN `roles` ON `users`.`role_id` = `roles`.`id`;";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo '<table class="table table-hover table-bordered">
@@ -70,6 +71,7 @@ session_start();
                     <td>First name</td>
                     <td>Last name</td>
                     <td>Email</td>
+                    <td>Role</td>
                    </tr>';
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
@@ -77,6 +79,7 @@ session_start();
                         <td>" . $row["first_name"] . "</td>
                         <td>" . $row["last_name"] . "</td>
                         <td>" . $row["email"] . "</td>
+                        <td>" . $row["title"] . "</td>
                       </tr>";
         }
         echo '</table>';

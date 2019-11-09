@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mainPage = "../index.php";
+$mainPage = "iindex.php";
 if (isset($_SESSION['email'])) {
     header("Location: " . $mainPage);
 }
@@ -17,37 +17,41 @@ if (isset($_SESSION['email'])) {
 </head>
 <body>
 <div class="bg-image-up"></div>
-<form action="../registrationController.php" method="post">
+<form action="ssignUpController.php" method="post">
     <div class="signup-form">
         <h1>Sign up</h1>
         <div class="textbox-up">
-            <input type="text" placeholder="First name" name="" value="">
+            <input id="firstName" type="text" placeholder="First name" name="firstName" value="" required>
         </div>
         <div class="textbox-up">
-            <input type="text" placeholder="Last name" name="" value="">
+            <input id="lastName" type="text" placeholder="Last name" name="lastName" value="" required>
         </div>
 
         <div class="role-select">
-            <select>
-                <option value="unauthorized" selected>Unauthorized</option>
-                <option value="users">Group users</option>
-                <option value="admins">Group admins</option>
+            <select id="role" name="role" required>
+                <option disabled selected>Select the role</option>
+                <option  value="2">Group users</option>
+                <option  value="1">Group admins</option>
             </select>
         </div>
 
         <div class="textbox-up">
-            <input type="password" placeholder="Password" name="" value="">
-        </div>
-        <div class="textbox-up">
-            <input type="password" placeholder="Repeat password" name="" value="">
+            <input id="email" type="text" placeholder="E-mail" name="email" value="" required>
         </div>
 
-        <input class="button-up" type="button" name="" value="Sign up">
+        <div class="textbox-up">
+            <input id="password" type="password" placeholder="Password" name="password" value="" required>
+        </div>
+        <div class="textbox-up">
+            <input id="password_r" type="password" placeholder="Repeat password" name="password_r" value="" required>
+        </div>
+
+        <button>Sign Up</button>
     </div>
 </form>
 <div class="text-right">
         <span>
-            <a href="../index.php">Back to main page</a>
+            <a href="iindex.php">Back to main page</a>
         </span>
 </div>
 </body>
