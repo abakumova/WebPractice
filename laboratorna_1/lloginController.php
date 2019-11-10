@@ -1,9 +1,10 @@
 <?php
 include 'dbUtils.php';
+include 'validation.php';
 
 session_start();
 
-$mainPage = "iindex.php#openModalWrong";
+$mainPage = "index.php#openModalWrong";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['incorrect'] = false;
     $email = $_POST['email'];
@@ -34,13 +35,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 header('Location: ' . $mainPage);
 

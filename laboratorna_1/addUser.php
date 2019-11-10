@@ -22,16 +22,16 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
 <body>
 <nav class="buttonsPanel">
     <img class="logo" src=assets/img/logo1.png>
-    <button class="buttonBack">
+    <div class="buttonBack">
         <span>
             <a href="index.php">Back to main page</a>
         </span>
-    </button>
+    </div>
 </nav>
 
 <form action="ssignUpController.php" method="post" class="bg-image-up">
     <div class="signup-form">
-        <h1>Sign up</h1>
+        <h1>Add user</h1>
         <div class="textbox-up">
             <input id="firstName" type="text" placeholder="First name" name="firstName" value="" required>
         </div>
@@ -58,7 +58,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
             <input id="password_r" type="password" placeholder="Repeat password" name="password_r" value="" required>
         </div>
 
-        <button class="button-up">Sign Up</button>
+        <button class="button-up">Approve</button>
     </div>
 </form>
 <footer class="footer">

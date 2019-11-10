@@ -1,7 +1,8 @@
 <?php
 include 'dbUtils.php';
+include 'validation.php';
 session_start();
-$mainPage = "iindex.php";
+$mainPage = "index.php";
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     header("Location:" . $mainPage);
 } else {
@@ -37,12 +38,4 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
             header("Location:" . $registrationPage);
         }
     }
-}
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
 }

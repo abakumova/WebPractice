@@ -1,0 +1,364 @@
+@import url("//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://use.fontawesome.com/d59b846578.js");
+@import url(//db.onlinewebfonts.com/c/a89133308b1afde09bf253f1672490c5?family=bubbleboddy+light);
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "bubbleboddy light";
+}
+
+a{
+    text-decoration: none;
+}
+header {
+    padding: 5px;
+    background-color: #f1d7e3;
+    text-align: center;
+    font-palette: light;
+}
+
+.logo {
+    position: absolute;
+    top: 90px;
+    left: 75px;
+    width: 75px;
+    height: 55px;
+}
+
+.buttonsPanel {
+    background-color: #e0b9f1;
+    height: 65px;
+}
+
+.buttonIn {
+    font-family: "bubbleboddy light";
+    width: 90px;
+    background: none;
+    border: 2px solid #a000a0;
+    color: white;
+    padding: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 13px 6px;
+    text-decoration: none;
+    position: absolute;
+    right: 185px;
+}
+
+.buttonUp {
+    font-family: "bubbleboddy light";
+    width: 90px;
+    background: none;
+    border: 2px solid #008B8B;
+    color: #008080;
+    padding: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 13px 6px;
+    text-decoration: none;
+    position: absolute;
+    right: 75px;
+}
+
+.textbox {
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+
+.textbox input {
+    font-family: "bubbleboddy light";
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    width: 60%;
+    float: left;
+    margin: 0 10px;
+    border-bottom: 2px solid #9b3ca0;
+}
+
+.loginButton {
+    font-family: "bubbleboddy light";
+    width: 85px;
+    height: 35px;
+    display: inline-block;
+    background: none;
+    border: 2px solid #a000a0;
+    color: #a000a0;
+    font-size: 18px;
+    cursor: pointer;
+    align-content: center;
+    margin-left: 400px;
+}
+
+.modalDialog {
+    position: fixed;
+    font-family: "bubbleboddy light";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    -webkit-transition: opacity 500ms ease-in;
+    -moz-transition: opacity 500ms ease-in;
+    transition: opacity 500ms ease-in;
+    display: none;
+    pointer-events: none;
+}
+
+.login-box h1 {
+    float: left;
+    font-family: "bubbleboddy light";
+    font-size: 40px;
+    border-bottom: 6px solid #a000a0;
+    margin-bottom: 30px;
+    padding: 13px 0;
+}
+
+.login-box p {
+    color: black;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+.modalDialog:target {
+    display: block;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 500px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: #ff98fd;
+    background: -moz-linear-gradient(#ff98fd, #ffb6e9);
+    background: -webkit-linear-gradient(#ff98fd, #ffb6e9);
+    background: -o-linear-gradient(#ff98fd, #ffb6e9);
+}
+
+.close {
+    background: #997a92;
+    color: #ff98fd;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+    background: #00d9ff;
+}
+
+.signup-form {
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #008080;
+    font-family: "bubbleboddy light";
+}
+
+.signup-form h1 {
+    float: left;
+    font-family: "bubbleboddy light";
+    color: #008080;
+    font-size: 40px;
+    border-bottom: 6px solid #008B8B;
+    margin-bottom: 50px;
+    padding: 13px 0;
+}
+
+.textbox-up {
+    font-family: "bubbleboddy light";
+    width: 100%;
+    overflow: hidden;
+    font-size: 18px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom: 1px solid #66CDAA;
+}
+
+.textbox-up input {
+    font-family: "bubbleboddy light";
+    border: none;
+    outline: none;
+    background: none;
+    color: #008080;
+    font-size: 18px;
+    width: 80%;
+    float: left;
+}
+
+.role-select {
+    font-family: "bubbleboddy light";
+    border: none;
+    outline: none;
+    background: none;
+    color: #008080;
+    font-size: 18px;
+    width: 100%;
+    border-bottom: 1px solid #66CDAA;
+    padding: 6px 0;
+    /*padding: 1%;*/
+    /*margin: 4px ;*/
+    float: left;
+}
+
+.role-select select {
+    font-family: "bubbleboddy light";
+    border: none;
+    outline: none;
+    background: none;
+    color: #008080;
+    font-size: 18px;
+    width: 100%;
+    padding: 6px 0;
+    /*padding: 1% ;*/
+    /*margin: 4px ;*/
+    float: left;
+}
+
+.button-up-transparent {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    color: gainsboro;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    left: 80%;
+}
+
+.button-up {
+    font-family: "bubbleboddy light";
+    width: 100%;
+    background: none;
+    border: 2px solid #008B8B;
+    color: #008080;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 0;
+}
+
+.buttonBack {
+    font-family: "bubbleboddy light";
+    width: 150px;
+    background: none;
+    border: 2px solid #008B8B;
+    color: #008080;
+    padding: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 13px 6px;
+    text-decoration: none;
+    position: absolute;
+    right: 75px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f1d7e3;
+    text-align: center;
+    font-palette: light;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    font-size: 25px;
+}
+
+.bg-image-up {
+    background-size: cover;
+    height: 75%;
+    background: url("../img/dan.jpg") no-repeat;
+    background-size: cover;
+}
+
+table {
+    border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+}
+
+/*th {*/
+/*    color: #039;*/
+/*    border-bottom: 2px solid #6678b1;*/
+/*    padding: 10px 8px;*/
+/*}*/
+
+/*td {*/
+/*    border-bottom: 1px solid #ccc;*/
+/*    color: #669;*/
+/*    padding: 9px 8px;*/
+/*    transition: .3s linear;*/
+/*}*/
+
+th {
+    font-weight: normal;
+    border-bottom: 2px solid #6678b1;
+    border-right: 30px solid #fff;
+    border-left: 30px solid #fff;
+    color: #039;
+    padding: 8px 2px;
+}
+
+td {
+    border-right: 30px solid #fff;
+    border-left: 30px solid #fff;
+    color: #669;
+    padding: 12px 2px;
+}
+
+table {
+    font-size: 22px;
+    background: white;
+    max-width: 70%;
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.bold {
+    border-right: 30px solid #fff;
+    border-left: 30px solid #fff;
+    color: #669;
+    padding: 12px 2px;
+    font-size: 30px;
+    text-align: center;
+}
+
+tr:hover td {
+    background: #e8edff;
+}
+
+@font-face {
+    font-family: "bubbleboddy light";
+    src: url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.eot");
+    src: url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/a89133308b1afde09bf253f1672490c5.svg#bubbleboddy light") format("svg");
+}

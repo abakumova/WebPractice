@@ -2,7 +2,7 @@
 include "dbUtils.php";
 session_start();
 $id = $_GET['id'];
-$mainPage = 'iindex.php';
+$mainPage = 'index.php';
 $sql = "DELETE FROM users WHERE id = $id;";
 if ($_SESSION['id'] == $id) {
     echo $sql;

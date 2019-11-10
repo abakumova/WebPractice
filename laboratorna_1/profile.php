@@ -1,5 +1,6 @@
 <?php
 include "dbUtils.php";
+include "validation.php";
 session_start();
 
 $id = $_GET['id'];
@@ -13,163 +14,146 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
     $show = true;
     $linkToPhoto = !empty($row['photo']) ? 'public/images/' . $row['photo'] : "assets/img/defaultProfilePhoto.png";
 }
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/e99543c0a3.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <title>Profile</title>
-    <link rel="stylesheet" href="t.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+    <h1>Outstanding users of an outstanding system</h1>
+</header>
 <?php
 if (empty($_SESSION['email'])) {
     echo '
-        <span>
-            <button type="button" class="btn btn-info nav-button">
-                <a href="iindex.php" class="text-white">Main page</a>
-            </button>
-        </span>
-<span>
-<button>
-        <a href="#openModal" target="_self"> Sign in </a>
-    </button>
-</span>
-<form  method="post" action="lloginController.php">
-        <div id="openModal" class="modalDialog">
-            <div>
-                <a href="#close" title="Close" class="close">X</a>
-                <div class="login-box">
-                    <h3>Login</h3>
-                    <div class="textbox">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id = "email" placeholder="Username" name="email" required>
-                        <span class="error"></span>
-                    </div>
-                    <div class="textbox">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Password" name="password" required>
-                        <span class="error"><?php echo $passwordErr; ?</span>
-                    </div>
-                    <button>Login in</button>
-                </div>
-            </div>
-        </div>
-    </form>
-            
+            <nav class="buttonsPanel">
+                <img class="logo" src=assets/img/logo1.png>                
+                    <button class="buttonIn">
+                        <a href="index.php">Main</a>
+                    </button>
+                    <button class="buttonUp">
+                        <a href="#openModal" target="_self"> Sign in </a>
+                    </button>
+                    <form  method="post" action="lloginController.php">
+                        <div id="openModal" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="close">X</a>
+                                <div class="login-box">
+                                    <h1>Login</h1>
+                                    <div class="textbox">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id = "email" placeholder="Username" name="email" required>
+                                    </div>
+                                    <div class="textbox">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="password" placeholder="Password" name="password" required>
+                                    </div>
+                                </div>
+                            <button class="loginButton">Login in</button>
+                        </div>
+                    </form>
+            </nav>
             
     ';
 } else {
-    echo '<div class="text-right">
-        <span>
-            <button type="button" class="btn btn-info nav-button">
-                <a href="iindex.php" class="text-white">Main page</a>
-            </button>
-        </span>
-        <span>
-            <button type="button" class="btn btn-danger logout-button">
-                <a href="llogoutController.php" class="text-white">Logout</a>
-            </button>
-        </span>
-    </div>';
+    echo '<div>
+            <nav class="buttonsPanel">
+                <img class="logo" src=assets/img/logo1.png> 
+                <button class="buttonIn">
+                    <a href="index.php">Main</a>
+                </button>
+                <button class="buttonUp">
+                    <a href="llogoutController.php">Logout</a>
+                </button>
+            </nav>    
+          </div>';
 }
 ?>
-</nav>
 
 <div class="container">
     <?php
-    if(empty($_SESSION['email']) || $_SESSION['id'] != $id && $_SESSION['role'] != 'admin'){
+    if (empty($_SESSION['email']) || $_SESSION['id'] != $id && $_SESSION['role'] != 'admin') {
         echo '
                 <div>
-                    <img src="' . $linkToPhoto . '" alt="Profile photo" id="usersImage">
+                    <img src="' . $linkToPhoto . '" alt="Profile photo">
                 </div>
                 <div >
-                    <input type="text" readonly placeholder="First name" name="firstName" value="' . $row['first_name'] . '">
+                    <label>First name</label>
+                    <input type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" readonly>
                 </div>
                 <div >
-                    <input type="text" readonly placeholder="Last name" name="lastName" value="' . $row['last_name'] . '">
+                    <label>Last name</label>
+                    <input type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" readonly>
                 </div>
                 <div>
-                    <input id="email" readonly type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '">
+                    <label>E-mail</label>
+                    <input type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '" readonly>
                 </div>';
 
     } else
-    if ($_SESSION['id'] == $id || $_SESSION['role'] == 'admin' && !empty($_SESSION['email'])) {
-        if ($show) {
-            echo '<div >
-        <div >
-            <div>
-                <img src="' . $linkToPhoto . '" alt="Profile photo" id="usersImage">
-            </div>
-            <form action="uploadController.php?id=' . $id . '" method="post" enctype="multipart/form-data">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submit">
-            </form>
-        </div>
-        
-        <div >
-                <form action="updateProfileController.php" method="post">
-                 <div class="signup-form">
-        <h1>Sign up</h1>
-       
-        <div >
-            <input type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" required>
-        </div>
-        <div >
-            <input type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" required>
-        </div>
-
-        <div >
-            <input id="email" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '"  required>
-        </div>
-
-        <div >
-            <input id="password" type="password" placeholder="Password" name="password" value="' . $row['password'] . '" required>
-        </div>';
-
-            if ($_SESSION['role'] == 'admin') {
-                echo '
-            <div class="role-select">
-            <select id="role" name="role" required>
-                <option disabled selected>Select the role</option>
-                <option  value="2">Group users</option>
-                <option  value="1">Group admins</option>
-            </select>
-        </div>
-            ';
-            }
-
-
-            echo '<button type="submit" class="btn btn-success btn-block">Edit</button>  
-                     
-                            <button type="" class="btn btn-danger btn-block">
+        if ($_SESSION['id'] == $id || $_SESSION['role'] == 'admin' && !empty($_SESSION['email'])) {
+            if ($show) {
+                echo '<div>
+                        <div>
+                            <div>
+                                <img src="' . $linkToPhoto . '" alt="Profile photo" id="usersImage">
+                            </div>
+                            <form action="uploadController.php?id=' . $id . '" method="post" enctype="multipart/form-data">
+                                Select image to upload:
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                <input type="submit" value="Upload Image" name="submit">
+                            </form>
+                        </div>
+                        <div>
+                            <form action="updateProfileController.php" method="post">
+                                <div class>
+                                <div>
+                                    <label>First name</label>
+                                    <input type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" required>
+                                </div>
+                                <div>
+                                    <label>Last name</label>
+                                    <input type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" required>
+                                </div>
+                                <div>
+                                    <label>E-mail</label>
+                                    <input id="email" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '"  required>
+                                </div>
+                                <div>
+                                    <label>Password</label>
+                                    <input id="password" type="password" placeholder="Password" name="password" value="' . $row['password'] . '" required>
+                                </div>';
+                if ($_SESSION['role'] == 'admin') {
+                    echo '
+                        <div>
+                            <select id="role" required>
+                                <option disabled selected>Select the role</option>
+                                <option  value="2">Group users</option>
+                                <option  value="1">Group admins</option>
+                            </select>
+                        </div>';
+                }
+                echo '<button type="submit">Edit</button>  
+                            <button>
                                 <a href="deleteProfileController.php?id=' . $id . '" class="text-white">Delete</a>
-                            </button>   
-        </form>               
-         </div> 
-              ';
-        } else {
-            echo "<div><p>Update is wrong:(</p><a href='iindex.php'>Main page</a></div>";
-        }
-        echo '</div>
-    </div>';
-    }
-
-
-
+                            </button>            
+                    </div>';
+            } else {
+                echo "<div><p>Update is wrong:(</p><a href='index.php'>Main page</a></div>";
+            }
+            echo '</div>
+    </div>';}
     ?>
 </div>
+<footer class="footer">
+    © Copyright VA 2019
+</footer>
 </body>
 </html>
 

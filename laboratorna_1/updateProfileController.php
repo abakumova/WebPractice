@@ -1,8 +1,9 @@
 <?php
 include 'dbUtils.php';
+include 'validation.php';
 session_start();
 $profilePage = "profile.php";
-$ii= "iindex.php";
+$ii= "index.php";
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     header("Location: $profilePage?id='.$id.'");
 } else {
@@ -29,11 +30,4 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
 
     }
     header("Location: $profilePage?id='.$id.'");
-}
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
 }
