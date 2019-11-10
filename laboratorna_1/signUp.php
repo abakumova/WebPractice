@@ -1,7 +1,7 @@
 <?php
 session_start();
 $mainPage = "iindex.php";
-if (isset($_SESSION['email'])) {
+if (isset($_SESSION['email']) && $_SESSION['role']!='admin') {
     header("Location: " . $mainPage);
 }
 ?>

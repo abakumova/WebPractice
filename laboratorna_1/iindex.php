@@ -98,14 +98,6 @@ if (empty($_SESSION['email'])) {
 
 
 
-
-
-
-
-
-
-
-
     <main>
         <div class="table">
             <?php
@@ -128,18 +120,18 @@ if (empty($_SESSION['email'])) {
                     <td>Last name</td>
                     <td>Email</td>
                     <td>Role</td>
-                   </tr>';
+                 </tr>';
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>
-                        <td><a href='#'>" . $row["id"] . "</a></td>
+                        <td><a href='profile.php?id=" . $row["id"] . "'>" . $row["id"] . "</a></td>
                         <td>" . $row["first_name"] . "</td>
                         <td>" . $row["last_name"] . "</td>
                         <td>" . $row["email"] . "</td>
-                        <td>" . $row["title"] . "</td>
-                      </tr>";
+                        <td>" . $row["title"] . "</td>         
+                     </tr>";
                 }
-                echo '</table>';
-            } else {
+                echo '</table>';}
+             else {
                 echo '<p>Nothing to show :(</p>';
             }
             ?>
@@ -149,10 +141,8 @@ if (empty($_SESSION['email'])) {
 <?php
 if(!empty($_SESSION['email']) && $_SESSION['role'] == 'admin'){
     echo '
-    <button>
-        <a href="signUp.php">
-        Add user
-    </a>
+     <button>
+        <a href="signUp.php">Add user</a>
     </button>';
 }
 ?>
