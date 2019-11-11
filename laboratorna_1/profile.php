@@ -81,20 +81,24 @@ if (empty($_SESSION['email'])) {
     if (empty($_SESSION['email']) || $_SESSION['id'] != $id && $_SESSION['role'] != 'admin') {
         echo '
                 <div>
-                    <img src="' . $linkToPhoto . '" alt="Profile photo">
+                    <img class="profilePhoto" src="' . $linkToPhoto . '" alt="Profile photo">
                 </div>
-                <div >
-                    <label>First name</label>
-                    <input type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" readonly>
-                </div>
-                <div >
-                    <label>Last name</label>
-                    <input type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" readonly>
-                </div>
-                <div>
-                    <label>E-mail</label>
-                    <input type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '" readonly>
-                </div>';
+                <form class="profileForm">
+                    <h1>Information</h1>
+                    <div class="field">
+                        <label>First name</label>
+                    <input class="profileInput" type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" readonly>
+                    </div>
+                    <div class="field">
+                        <label>Last name</label>
+                        <input class="profileInput" type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" readonly>
+                    </div>
+                    <div class="field">
+                        <label>E-mail</label>
+                        <input class="profileInput" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '" readonly>
+                    </div>
+                </form>
+                ';
 
     } else
         if ($_SESSION['id'] == $id || $_SESSION['role'] == 'admin' && !empty($_SESSION['email'])) {
@@ -102,46 +106,50 @@ if (empty($_SESSION['email'])) {
                 echo '<div>
                         <div>
                             <div>
-                                <img src="' . $linkToPhoto . '" alt="Profile photo" id="usersImage">
+                                <img src="' . $linkToPhoto . '" alt="Profile photo" class="profilePhoto">
                             </div>
-                            <form action="uploadController.php?id=' . $id . '" method="post" enctype="multipart/form-data">
+                            <form action="uploadController.php?id=' . $id . '" method="post" enctype="multipart/form-data" class="uploadForm">
                                 Select image to upload:
-                                <input type="file" name="fileToUpload" id="fileToUpload">
-                                <input type="submit" value="Upload Image" name="submit">
+                                <input class="profileUploadChoose" type="file" name="fileToUpload" id="fileToUpload">
+                                <input type="submit" value="Upload Image" name="submit" class="uploadButtonPicture">
                             </form>
                         </div>
                         <div>
-                            <form action="updateProfileController.php" method="post">
-                                <div class>
+                            <form action="updateProfileController.php" method="post" class="profileForm">
+                            <h1>Information</h1>
                                 <div>
+                                <div class="field">
                                     <label>First name</label>
-                                    <input type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" required>
+                                    <input class="profileInput" type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" required>
                                 </div>
-                                <div>
+                                <div class="field">
                                     <label>Last name</label>
-                                    <input type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" required>
+                                    <input class="profileInput" type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" required>
                                 </div>
-                                <div>
-                                    <label>E-mail</label>
-                                    <input id="email" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '"  required>
+                                <div class="field">
+                                    <label>E-mail   </label>
+                                    <input class="profileInput" id="email" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '"  required>
                                 </div>
-                                <div>
+                                <div class="field">
                                     <label>Password</label>
-                                    <input id="password" type="password" placeholder="Password" name="password" value="' . $row['password'] . '" required>
+                                    <input class="profileInput" id="password" type="password" placeholder="Password" name="password" value="' . $row['password'] . '" required>
                                 </div>';
                 if ($_SESSION['role'] == 'admin') {
                     echo '
-                        <div>
-                            <select id="role" required>
-                                <option disabled selected>Select the role</option>
-                                <option  value="2">Group users</option>
-                                <option  value="1">Group admins</option>
-                            </select>
-                        </div>';
+                        <form class="profileForm">
+                             <div>
+                                <select id="role" required class="uploadSelect">
+                                    <option disabled selected>Change the role</option>
+                                    <option  value="2">Group users</option>
+                                    <option  value="1">Group admins</option>
+                                </select>
+                            </div>
+                        </form>
+                       ';
                 }
-                echo '<button type="submit">Edit</button>  
-                            <button>
-                                <a href="deleteProfileController.php?id=' . $id . '" class="text-white">Delete</a>
+                echo '<button type="submit" class="uploadButton">Edit</button>  
+                            <button class="uploadButton">
+                                <a href="deleteProfileController.php?id=' . $id . '">Delete</a>
                             </button>            
                     </div>';
             } else {

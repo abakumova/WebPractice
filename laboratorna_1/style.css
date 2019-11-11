@@ -9,9 +9,10 @@ body, html {
     font-family: "bubbleboddy light";
 }
 
-a{
+a {
     text-decoration: none;
 }
+
 header {
     padding: 5px;
     background-color: #f1d7e3;
@@ -351,6 +352,116 @@ table {
 
 tr:hover td {
     background: #e8edff;
+}
+
+.profilePhoto {
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    padding: 4px;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .15)
+}
+
+.profileInput {
+    padding: 8px 0;
+    margin: 8px 0;
+    font-family: "bubbleboddy light";
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid #f14e6f;
+}
+
+.profileForm {
+    position: absolute;
+    top: 160px;
+    left: 700px;
+    color: #f14e6f;
+    font-family: "bubbleboddy light";
+    margin: 5px;
+    font-size: 25px;
+}
+
+.uploadForm {
+    margin-top: 350px;
+    margin-left: 300px;
+    width: 150px;
+}
+
+.field {
+    clear: both;
+    text-align: right;
+    line-height: 25px;
+}
+
+label {
+    float: left;
+    padding-right: 8px;
+}
+
+.main {
+    float: left
+}
+
+.uploadSelect {
+    font-family: "bubbleboddy light";
+    border: none;
+    outline: none;
+    background: none;
+    color: #f14e6f;
+    font-size: 25px;
+    width: 100%;
+    border-bottom: 1px solid #f17e80;
+    padding: 6px 0;
+    float: left;
+    margin-top: 10px;
+}
+
+.uploadButton {
+    font-family: "bubbleboddy light";
+    width: 90px;
+    background: none;
+    border: 2px solid #f14e6f;
+    padding: 6px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 95px 23px;
+    text-decoration: none;
+    text-decoration-color: #f14e6f;
+    color: #f14e6f;
+}
+
+.uploadButtonPicture {
+    font-family: "bubbleboddy light";
+    width: 180px;
+    background: none;
+    border: 2px solid #f14e6f;
+    padding: 6px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 10px 29px;
+    text-decoration: none;
+    text-decoration-color: #f14e6f;
+    color: #f14e6f;
+}
+
+.uploadButton a {
+    color: #f14e6f;
+}
+
+.profileUploadChoose {
+    font-family: "bubbleboddy light";
+    margin: 17px;
+    text-decoration-color: #f14e6f;
 }
 
 @font-face {

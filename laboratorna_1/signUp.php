@@ -22,11 +22,11 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
 <body>
 <nav class="buttonsPanel">
     <img class="logo" src=assets/img/logo1.png>
-    <button class="buttonBack">
+    <div class="buttonBack">
         <span>
             <a href="index.php">Back to main page</a>
         </span>
-    </button>
+    </div>
 </nav>
 
 <form action="ssignUpController.php" method="post" class="bg-image-up">
