@@ -3,6 +3,11 @@ session_start();
 $mainPage = "index.php";
 if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     header("Location: " . $mainPage);
+    if ($_SESSION['role'] == 'admin') {
+        $_SESSION['role'] = 'admin';
+        $id = $_GET['id'];
+        $_SESSION['id'] = $id;
+    }
 }
 ?>
 
@@ -13,7 +18,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <meta charset="UTF-8">
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <header>
@@ -29,7 +34,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     </div>
 </nav>
 
-<form action="ssignUpController.php" method="post" class="bg-image-up">
+<form action="addUserController.php" method="post" class="bg-image-up">
     <div class="signup-form">
         <h1>Add user</h1>
         <div class="textbox-up">
@@ -38,7 +43,6 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
         <div class="textbox-up">
             <input id="lastName" type="text" placeholder="Last name" name="lastName" value="" required>
         </div>
-
         <div class="role-select">
             <select id="role" name="role" required>
                 <option disabled selected>Select the role</option>
@@ -46,7 +50,6 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
                 <option value="1">Group admins</option>
             </select>
         </div>
-
         <div class="textbox-up">
             <input id="email" type="text" placeholder="E-mail" name="email" value="" required>
         </div>
@@ -57,7 +60,6 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
         <div class="textbox-up">
             <input id="password_r" type="password" placeholder="Repeat password" name="password_r" value="" required>
         </div>
-
         <button class="button-up">Approve</button>
     </div>
 </form>

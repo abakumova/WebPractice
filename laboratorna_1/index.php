@@ -9,7 +9,7 @@ session_start();
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <meta charset="UTF-8">
     <title>Index Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <header>
@@ -21,14 +21,14 @@ include 'dbUtils.php';
 if (empty($_SESSION['email'])) {
     echo '
             <nav class="buttonsPanel">
-                <img class="logo" src=assets/img/logo1.png>
+                <img class="logo" src=assets/img/logo1.png alt="VA">
                 <button class="buttonIn">
                     <a href="#openModal" target="_self"> Sign in </a>
                 </button>
                 <button class="buttonUp">
                     <a href="signUp.php">Sign up</a>
                 </button>
-                <form  method="post" action="lloginController.php">
+                <form  method="post" action="logInController.php">
                     <div id="openModal" class="modalDialog">
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
@@ -49,7 +49,7 @@ if (empty($_SESSION['email'])) {
                 </form>  
             </nav>';
     echo ' 
-    <form  method="post" action="lloginController.php">
+    <form  method="post" action="logInController.php">
         <div id="openModalWrong" class="modalDialog">
             <div>
                 <a href="#close" title="Close" class="close">X</a>
@@ -71,7 +71,7 @@ if (empty($_SESSION['email'])) {
     </form>';
 } else {
     echo ' <nav class="buttonsPanel">
- <img class="logo" src=assets/img/logo1.png>
+ <img class="logo" src=assets/img/logo1.png alt="VA">
                 <span>
                     <button type="button" class="buttonIn">
                         <a href="profile.php?id=' . $_SESSION['id'] . '" class="text-white">' . $_SESSION['firstName'] . '</a>
@@ -79,7 +79,7 @@ if (empty($_SESSION['email'])) {
                 </span>
                 <span>
                     <button type="button" class="buttonUp">
-                        <a href="llogoutController.php" class="text-white">Sign out</a>   
+                        <a href="logOutController.php" class="text-white">Sign out</a>   
                     </button>
                 </span>
             </nav>';
@@ -137,5 +137,4 @@ if (!empty($_SESSION['email']) && $_SESSION['role'] == 'admin') {
 <footer class="footer">
     © Copyright VA 2019
 </footer>
-</body>
 </html>

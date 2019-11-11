@@ -13,7 +13,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <meta charset="UTF-8">
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <header>
@@ -21,15 +21,15 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
 </header>
 <body>
 <nav class="buttonsPanel">
-    <img class="logo" src=assets/img/logo1.png>
+    <img class="logo" src=../assets/img/logo1.png>
     <div class="buttonBack">
         <span>
-            <a href="index.php">Back to main page</a>
+            <a href="../index.php">Back to main page</a>
         </span>
     </div>
 </nav>
 
-<form action="ssignUpController.php" method="post" class="bg-image-up">
+<form action="signUpController.php" method="post" class="bg-image-up">
     <div class="signup-form">
         <h1>Sign up</h1>
         <div class="textbox-up">

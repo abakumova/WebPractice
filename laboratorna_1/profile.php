@@ -23,7 +23,7 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
     <script src="https://kit.fontawesome.com/e99543c0a3.js" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <title>Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <header>
@@ -33,14 +33,14 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
 if (empty($_SESSION['email'])) {
     echo '
             <nav class="buttonsPanel">
-                <img class="logo" src=assets/img/logo1.png>                
+                <img class="logo"  src=assets/img/logo1.png alt="VA">                
                     <button class="buttonIn">
                         <a href="index.php">Main</a>
                     </button>
                     <button class="buttonUp">
                         <a href="#openModal" target="_self"> Sign in </a>
                     </button>
-                    <form  method="post" action="lloginController.php">
+                    <form  method="post" action="logInController.php">
                         <div id="openModal" class="modalDialog">
                             <div>
                                 <a href="#close" title="Close" class="close">X</a>
@@ -64,12 +64,12 @@ if (empty($_SESSION['email'])) {
 } else {
     echo '<div>
             <nav class="buttonsPanel">
-                <img class="logo" src=assets/img/logo1.png> 
+                <img class="logo" src=assets/img/logo1.png alt="VA"> 
                 <button class="buttonIn">
                     <a href="index.php">Main</a>
                 </button>
                 <button class="buttonUp">
-                    <a href="llogoutController.php">Logout</a>
+                    <a href="logOutController.php">Logout</a>
                 </button>
             </nav>    
           </div>';
@@ -156,7 +156,8 @@ if (empty($_SESSION['email'])) {
                 echo "<div><p>Update is wrong:(</p><a href='index.php'>Main page</a></div>";
             }
             echo '</div>
-    </div>';}
+    </div>';
+        }
     ?>
 </div>
 <footer class="footer">

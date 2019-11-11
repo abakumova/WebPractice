@@ -292,7 +292,7 @@ header {
 
 .bg-image-up {
     background-size: cover;
-    height: 75%;
+    height: 50%;
     background: url("../img/dan.jpg") no-repeat;
     background-size: cover;
 }

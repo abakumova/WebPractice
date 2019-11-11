@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     $lastName = $_POST['lastName'];
     $role = $_POST['role'];
     $password_r = $_POST['password_r'];
-    $registrationPage = "signUp.php";
+    $registrationPage = "addUser.php";
 
     if (test_input($email) && test_input($password) && test_input($firstName) && test_input($lastName)) {
         if (strlen($firstName) > 0 && strlen($lastName) > 0 && ($password_r == $password) && strlen($password) >= 6 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -22,18 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
             $getId = "SELECT id FROM users WHERE email = $email";
             $result = runQuery($getId);
             $row = 1;
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['firstName'] = $firstName;
-            $_SESSION['lastName'] = $lastName;
-            $_SESSION['email'] = $email;
-            if ($role == "2") {
-                $_SESSION['role'] = 2;
-            }
-            if ($role == "1") {
-                $_SESSION['role'] = 1;
-            }
             header("Location:" . $mainPage);
-
         } else {
             header("Location:" . $registrationPage);
         }

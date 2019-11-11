@@ -9,7 +9,7 @@ session_start();
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
 <div class="bg-image-index">
