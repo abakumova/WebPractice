@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mainPage = "index.php";
+$mainPage = "../index.php";
 if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     header("Location: " . $mainPage);
 }
@@ -13,7 +13,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <meta charset="UTF-8">
     <title>Sign Up Form</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <header>
@@ -21,15 +21,15 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
 </header>
 <body>
 <nav class="buttonsPanel">
-    <img class="logo" src=assets/img/logo1.png>
+    <img class="logo" src=../assets/img/logo1.png alt="VA">
     <div class="buttonBack">
         <span>
-            <a href="index.php">Back to main page</a>
+            <a href="../index.php">Back to main page</a>
         </span>
     </div>
 </nav>
 <div class="bg-image-up"></div>
-<form action="signUpController.php" method="post" class="signup-form">
+<form action="../controllers/signUpController.php" method="post" class="signup-form">
     <h1>Sign up</h1>
     <div class="textbox-up">
         <input id="firstName" type="text" placeholder="First name" name="firstName" value="" required>

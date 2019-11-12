@@ -4,7 +4,7 @@ include "validation.php";
 
 session_start();
 
-$profilePage = "profile.php";
+$profilePage = "../pages/profile.php";
 
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     header("Location: $profilePage?id='.$id.'");

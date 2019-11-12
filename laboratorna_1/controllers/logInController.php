@@ -4,7 +4,7 @@ include 'validation.php';
 
 session_start();
 
-$mainPage = "index.php#openModalWrong";
+$mainPage = "../index.php#openModalWrong";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['incorrect'] = false;
     $email = $_POST['email'];

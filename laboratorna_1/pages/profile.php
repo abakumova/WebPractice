@@ -1,6 +1,6 @@
 <?php
-include "dbUtils.php";
-include "validation.php";
+include "../controllers/dbUtils.php";
+include "../controllers/validation.php";
 session_start();
 
 $id = $_GET['id'];
@@ -23,7 +23,7 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
     <script src="https://kit.fontawesome.com/e99543c0a3.js" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
     <title>Profile</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 <header>
@@ -33,14 +33,14 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
 if (empty($_SESSION['email'])) {
     echo '
             <nav class="buttonsPanel">
-                <img class="logo"  src=assets/img/logo1.png alt="VA">                
+                <img class="logo"  src=../assets/img/logo1.png alt="VA">                
                     <button class="buttonIn">
-                        <a href="index.php">Main</a>
+                        <a href="../index.php">Main</a>
                     </button>
                     <button class="buttonUp">
                         <a href="#openModal" target="_self"> Sign in </a>
                     </button>
-                    <form  method="post" action="logInController.php">
+                    <form  method="post" action="../controllers/logInController.php">
                         <div id="openModal" class="modalDialog">
                             <div>
                                 <a href="#close" title="Close" class="close">X</a>
@@ -64,12 +64,12 @@ if (empty($_SESSION['email'])) {
 } else {
     echo '<div>
             <nav class="buttonsPanel">
-                <img class="logo" src=assets/img/logo1.png alt="VA"> 
+                <img class="logo" src=../assets/img/logo1.png alt="VA"> 
                 <button class="buttonIn">
-                    <a href="index.php">Main</a>
+                    <a href="../index.php">Main</a>
                 </button>
                 <button class="buttonUp">
-                    <a href="logOutController.php">Logout</a>
+                    <a href="../controllers/logOutController.php">Logout</a>
                 </button>
             </nav>    
           </div>';
@@ -115,7 +115,7 @@ if (empty($_SESSION['email'])) {
                             </form>
                         </div>
                         <div>
-                            <form action="updateProfileController.php" method="post" class="profileForm">
+                            <form action="controllers/updateProfileController.php" method="post" class="profileForm">
                             <h1>Information</h1>
                                 <div>
                                 <div class="field">

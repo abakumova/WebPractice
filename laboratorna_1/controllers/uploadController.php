@@ -47,4 +47,4 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-header("Location: profile.php?id=$id");
+header("Location: ../pages/profile.php?id=$id");

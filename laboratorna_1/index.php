@@ -17,7 +17,6 @@ session_start();
 </header>
 
 <?php
-include 'dbUtils.php';
 if (empty($_SESSION['email'])) {
     echo '
             <nav class="buttonsPanel">
@@ -26,9 +25,9 @@ if (empty($_SESSION['email'])) {
                     <a href="#openModal" target="_self"> Sign in </a>
                 </button>
                 <button class="buttonUp">
-                    <a href="signUp.php">Sign up</a>
+                    <a href="pages/signUp.php">Sign up</a>
                 </button>
-                <form  method="post" action="logInController.php">
+                <form  method="post" action="controllers/logInController.php">
                     <div id="openModal" class="modalDialog">
                         <div>
                             <a href="#close" title="Close" class="close">X</a>
@@ -49,7 +48,7 @@ if (empty($_SESSION['email'])) {
                 </form>  
             </nav>';
     echo ' 
-    <form  method="post" action="logInController.php">
+    <form  method="post" action="controllers/logInController.php">
         <div id="openModalWrong" class="modalDialog">
             <div>
                 <a href="#close" title="Close" class="close">X</a>
@@ -79,7 +78,7 @@ if (empty($_SESSION['email'])) {
                 </span>
                 <span>
                     <button type="button" class="buttonUp">
-                        <a href="logOutController.php" class="text-white">Sign out</a>   
+                        <a href="controllers/logOutController.php" class="text-white">Sign out</a>   
                     </button>
                 </span>
             </nav>';
@@ -130,7 +129,7 @@ if (empty($_SESSION['email'])) {
 if (!empty($_SESSION['email']) && $_SESSION['role'] == 'admin') {
     echo '
      <button class="buttonIn">
-        <a href="addUser.php">Add user</a>
+        <a href="../pages/addUser.php">Add user</a>
     </button>';
 }
 ?>
