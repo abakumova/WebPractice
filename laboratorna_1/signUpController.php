@@ -26,11 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
             $_SESSION['firstName'] = $firstName;
             $_SESSION['lastName'] = $lastName;
             $_SESSION['email'] = $email;
-            if ($role == "2") {
-                $_SESSION['role'] = 2;
+            if ($role == 2) {
+                $_SESSION['role'] = 'users';
             }
-            if ($role == "1") {
-                $_SESSION['role'] = 1;
+            if ($role == 1) {
+                $_SESSION['role'] = 'admin';
             }
             header("Location:" . $mainPage);
         } else {

@@ -291,15 +291,15 @@ header {
 }
 
 .bg-image-up {
-    background-size: cover;
-    height: 50%;
     background: url("../img/dan.jpg") no-repeat;
     background-size: cover;
+    -webkit-filter: blur(5px);
+    height: 80%;
 }
 
 table {
-    border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
-    border: 1px solid grey; /*устанавливаем для таблицы внешнюю границу серого цвета толщиной 1px*/
+    border-collapse: collapse;
+    border: 1px solid grey;
 }
 
 /*th {*/

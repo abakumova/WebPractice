@@ -9,20 +9,16 @@ body, html {
 }
 
 .bg-image {
-    background-size: cover;
-    height: 100%;
     background: url("../img/background.jpg") no-repeat;
     background-size: cover;
-    filter: blur(5px);
     -webkit-filter: blur(5px);
+    height: 100%;
 }
 
 .bg-image-up {
-    background-size: cover;
-    height: 100%;
     background: url("../img/dan.jpg") no-repeat;
     background-size: cover;
-    filter: blur(5px);
+    height: 100%;
     -webkit-filter: blur(5px);
 }
 

@@ -26,7 +26,7 @@ if (isset($_SESSION['email']) && $_SESSION['role'] != 'admin') {
 </header>
 <body>
 <nav class="buttonsPanel">
-    <img class="logo" src=assets/img/logo1.png>
+    <img class="logo" src=assets/img/logo1.png alt="VA">
     <div class="buttonBack">
         <span>
             <a href="index.php">Back to main page</a>

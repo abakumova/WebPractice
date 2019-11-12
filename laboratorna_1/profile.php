@@ -138,11 +138,16 @@ if (empty($_SESSION['email'])) {
                     echo '
                         <form class="profileForm">
                              <div>
-                                <select id="role" required class="uploadSelect">
-                                    <option disabled selected>Change the role</option>
-                                    <option  value="2">Group users</option>
-                                    <option  value="1">Group admins</option>
-                                </select>
+                                <select id="role" required class="uploadSelect">';
+                                    if($row['role_id']==2){
+                                        echo'<option  value="2" selected>Group users</option>
+                                             <option  value="1">Group admins</option>';
+                                    } else {
+                                            echo'<option  value="2">Group users</option>
+                                             <option  value="1" selected>Group admins</option>';
+                                    }echo
+
+                                '</select>
                             </div>
                         </form>
                        ';
