@@ -25,7 +25,7 @@ if (empty($_SESSION['email'])) {
                     <a href="#openModal" target="_self"> Sign in </a>
                 </button>
                 <button class="buttonUp">
-                    <a href="pages/signUp.php">Sign up</a>
+                    <a href="#openModalUp" target="_self">Sign up</a>
                 </button>
                 <form  method="post" action="controllers/logInController.php">
                     <div id="openModal" class="modalDialog">
@@ -46,28 +46,43 @@ if (empty($_SESSION['email'])) {
                         </div>
                      </div>    
                 </form>  
+                <form action="controllers/signUpController.php" method="post">
+                    <div id="openModalUp" class="modalDialogUp">
+                        <div>
+                            <a href="#closeUp" title="Close" class="closeUp">X</a>
+                            <h1 class="signupText">Sign up</h1>
+                            <div class="textbox-up">
+                                <input id="firstName" type="text" placeholder="First name" name="firstName" value="" required>
+                            </div>
+                            <div class="textbox-up">
+                                <input id="lastName" type="text" placeholder="Last name" name="lastName" value="" required>
+                            </div>
+                        
+                            <div class="role-select">
+                                <select id="role" name="role" required>
+                                    <option disabled selected>Select the role</option>
+                                    <option value="2">Group users</option>
+                                    <option value="1">Group admins</option>
+                                </select>
+                            </div>
+                        
+                            <div class="textbox-up">
+                                <input id="email" type="text" placeholder="E-mail" name="email" value="" required>
+                            </div>
+                        
+                            <div class="textbox-up">
+                                <input id="password" type="password" placeholder="Password" name="password" value="" required>
+                            </div>
+                            
+                            <div class="textbox-up">
+                                <input id="password_r" type="password" placeholder="Repeat password" name="password_r" value="" required>
+                            </div>
+                        
+                            <button class="button-up">Sign Up</button>
+                        </div>
+                     </div>    
+                </form>  
             </nav>';
-    echo ' 
-    <form  method="post" action="controllers/logInController.php">
-        <div id="openModalWrong" class="modalDialog">
-            <div>
-                <a href="#close" title="Close" class="close">X</a>
-                <div class="login-box">
-                    <h1>Login</h1>
-                    <p>Email or password is wrong. Try again</p>
-                    <div class="textbox">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id = "email" placeholder="Username" name="email" required>
-                    </div>
-                    <div class="textbox">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Password" name="password" required>
-                    </div>
-                    <button class="loginButton">Login in</button>
-                </div>
-            </div>
-        </div>
-    </form>';
 } else {
     echo ' <nav class="buttonsPanel">
  <img class="logo" src=assets/img/logo1.png alt="VA">

@@ -114,6 +114,22 @@ header {
     pointer-events: none;
 }
 
+.modalDialogUp {
+    position: fixed;
+    font-family: "bubbleboddy light";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    -webkit-transition: opacity 500ms ease-in;
+    -moz-transition: opacity 500ms ease-in;
+    transition: opacity 500ms ease-in;
+    display: none;
+    pointer-events: none;
+}
+
 .login-box h1 {
     float: left;
     font-family: "bubbleboddy light";
@@ -134,16 +150,33 @@ header {
     pointer-events: auto;
 }
 
+.modalDialogUp:target {
+    display: block;
+    pointer-events: auto;
+}
+
 .modalDialog > div {
+     width: 500px;
+     position: relative;
+     margin: 10% auto;
+     padding: 5px 20px 13px 20px;
+     border-radius: 10px;
+     background: #ff98fd;
+     background: -moz-linear-gradient(#ff98fd, #ffb6e9);
+     background: -webkit-linear-gradient(#ff98fd, #ffb6e9);
+     background: -o-linear-gradient(#ff98fd, #ffb6e9);
+ }
+
+.modalDialogUp > div {
     width: 500px;
     position: relative;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
-    background: #ff98fd;
-    background: -moz-linear-gradient(#ff98fd, #ffb6e9);
-    background: -webkit-linear-gradient(#ff98fd, #ffb6e9);
-    background: -o-linear-gradient(#ff98fd, #ffb6e9);
+    background: #95ffd4;
+    background: -moz-linear-gradient(#cbf3ff, #95ffd4);
+    background: -webkit-linear-gradient(#cbf3ff, #95ffd4);
+    background: -o-linear-gradient(#cbf3ff, #95ffd4);
 }
 
 .close {
@@ -165,10 +198,32 @@ header {
     box-shadow: 1px 1px 3px #000;
 }
 
+.closeUp {
+    background: #bbffcf;
+    color: #6ae4ff;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
 .close:hover {
     background: #00d9ff;
 }
 
+.closeUp:hover {
+    background: #00d9ff;
+}
 .signup-form {
     width: 280px;
     position: absolute;
@@ -179,7 +234,7 @@ header {
     font-family: "bubbleboddy light";
 }
 
-.signup-form h1 {
+.signupText {
     float: left;
     font-family: "bubbleboddy light";
     color: #008080;

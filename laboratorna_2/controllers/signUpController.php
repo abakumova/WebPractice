@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     $lastName = $_POST['lastName'];
     $role = $_POST['role'];
     $password_r = $_POST['password_r'];
-    $registrationPage = "../pages/signUp.php";
+    //$registrationPage = "../pages/signUp.php";
 
     if (test_input($email) && test_input($password) && test_input($firstName) && test_input($lastName)) {
         if (strlen($firstName) > 0 && strlen($lastName) > 0 && ($password_r == $password) && strlen($password) >= 6 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
             }
             header("Location:" . $mainPage);
         } else {
-            header("Location:" . $registrationPage);
+            header("Location:" . $mainPage);
         }
     }
 }
