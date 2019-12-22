@@ -1,6 +1,6 @@
 <?php
 include "dbUtils.php";
-include "validation.php";
+include "validationUtils.php";
 
 session_start();
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     $lastName = $_POST['lastName'];
     $role = $_POST['role'];
 
-    if (test_input($email) && test_input($password) && test_input($firstName) && test_input($lastName)) {
+    if (isValid($email) && isValid($password) && isValid($firstName) && isValid($lastName)) {
         $addUserSql = "UPDATE `users` SET `users`.email = '" . $email . "' , `users`.password = '" . $password . "', `users`.first_name = '" . $firstName . "', `users`.last_name = '" . $lastName . "' WHERE `users`.`id`='" . $id . "';";
         runQuery($addUserSql);
     }

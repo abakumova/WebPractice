@@ -1,7 +1,9 @@
 <?php
 include 'dbUtils.php';
-include 'validation.php';
+include 'validationUtils.php';
+
 session_start();
+
 $mainPage = "../index.php";
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     header("Location:" . $mainPage);
@@ -12,9 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
     $lastName = $_POST['lastName'];
     $role = $_POST['role'];
     $password_r = $_POST['password_r'];
-    //$registrationPage = "../pages/signUp.php";
 
-    if (test_input($email) && test_input($password) && test_input($firstName) && test_input($lastName)) {
+    if (isValid($email) && isValid($password) && isValid($firstName) && isValid($lastName)) {
+        if (!checkEmailOriginality($email)) {
+            echo 'notOriginalEmail';
+            exit;
+        }
+
         if (strlen($firstName) > 0 && strlen($lastName) > 0 && ($password_r == $password) && strlen($password) >= 6 && filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $addUserSql = "INSERT INTO `users` (first_name, last_name, email, password, role_id)
             VALUES ('" . $firstName . "', '" . $lastName . "', '" . $email . "', '" . $password . "', '" . $role . "');";
@@ -31,10 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] != "POST") {
             }
             if ($role == 1) {
                 $_SESSION['role'] = 'admin';
+                echo 'success';
+                exit;
             }
-            header("Location:" . $mainPage);
-        } else {
-            header("Location:" . $mainPage);
         }
-    }
+    } echo 'invalidData';
 }
+

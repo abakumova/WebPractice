@@ -72,16 +72,28 @@ header {
 }
 
 .textbox input {
+     font-family: "bubbleboddy light";
+     border: none;
+     outline: none;
+     background: none;
+     /*color: white;*/
+     font-size: 18px;
+     width: 60%;
+     float: left;
+     margin: 0 10px;
+     border-bottom: 2px solid #9b3ca0;
+ }
+
+.textboxHint input {
     font-family: "bubbleboddy light";
-    border: none;
     outline: none;
     background: none;
-    color: white;
+    /*color: white;*/
     font-size: 18px;
     width: 60%;
     float: left;
     margin: 0 10px;
-    border-bottom: 2px solid #9b3ca0;
+    border: 2px solid #a0090a;
 }
 
 .loginButton {
@@ -140,7 +152,7 @@ header {
 }
 
 .login-box p {
-    color: black;
+    color: #a000a0;
     font-size: 20px;
     margin-left: 100px;
 }
@@ -151,6 +163,11 @@ header {
 }
 
 .modalDialogUp:target {
+    display: block;
+    pointer-events: auto;
+}
+
+.modalDialogAdd:target {
     display: block;
     pointer-events: auto;
 }
@@ -517,6 +534,11 @@ label {
     font-family: "bubbleboddy light";
     margin: 17px;
     text-decoration-color: #f14e6f;
+}
+
+
+.hint {
+    color: #C70039;
 }
 
 @font-face {

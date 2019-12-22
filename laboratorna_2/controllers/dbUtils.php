@@ -13,3 +13,8 @@ function runQuery($sql) {
     mysqli_close($conn);
     return $result;
 }
+
+function checkEmailOriginality($email) {
+    $sql = "SELECT `users`.id FROM `users` WHERE `users`.email = '$email';";
+    return runQuery($sql)->num_rows == 0;
+}

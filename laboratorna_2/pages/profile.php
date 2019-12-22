@@ -1,7 +1,8 @@
 <?php
-include "../controllers/dbUtils.php";
-include "../controllers/validation.php";
 session_start();
+
+include $_SERVER['DOCUMENT_ROOT'] . "/WebPractice/laboratorna_2/controllers/dbUtils.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/WebPractice/laboratorna_2/controllers/validationUtils.php";
 
 $id = $_GET['id'];
 $sql = "SELECT `users`.`first_name`, `users`.`last_name`, `users`.`email`, `users`.`password`, `users`.`photo`, `users`.role_id
@@ -12,7 +13,7 @@ $row = null;
 $linkToPhoto = null;
 if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
     $show = true;
-    $linkToPhoto = !empty($row['photo']) ? 'public/images/' . $row['photo'] : "assets/img/defaultProfilePhoto.png";
+    $linkToPhoto = !empty($row['photo']) ? '../laboratorna_2/public/images/' . $row['photo'] : "../laboratorna_2/assets/img/defaultProfilePhoto.png";
 }
 ?>
 
@@ -22,6 +23,8 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/e99543c0a3.js" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/d59b846578.js"></script>
+    <script src="../assets/js/loginFormValidation.js"></script>
+    <script src="../assets/js/deleteUser.js"></script>
     <title>Profile</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -33,31 +36,34 @@ if ($result->num_rows > 0 && $row = $result->fetch_assoc()) {
 if (empty($_SESSION['email'])) {
     echo '
             <nav class="buttonsPanel">
-                <img class="logo"  src=../assets/img/logo1.png alt="VA">                
+                <a href="../index.php"><img class="logo" src=../assets/img/logo1.png alt="VA"></a>           
                     <button class="buttonIn">
                         <a href="../index.php">Main</a>
                     </button>
                     <button class="buttonUp">
                         <a href="#openModal" target="_self"> Sign in </a>
                     </button>
-                    <form  method="post" action="../controllers/logInController.php">
-                        <div id="openModal" class="modalDialog">
-                            <div>
-                                <a href="#close" title="Close" class="close">X</a>
-                                <div class="login-box">
-                                    <h1>Login</h1>
-                                    <div class="textbox">
-                                        <i class="fas fa-user"></i>
-                                        <input type="text" id = "email" placeholder="Username" name="email" required>
-                                    </div>
-                                    <div class="textbox">
-                                        <i class="fas fa-lock"></i>
-                                        <input type="password" id="password" placeholder="Password" name="password" required>
-                                    </div>
+                <form>
+                    <div id="openModal" class="modalDialog">
+                        <div>
+                            <a href="#close" title="Close" class="close">X</a>
+                            <div class="login-box">
+                                <h1>Login</h1>
+                                <div class="textbox">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id = "login" placeholder="Username" name="email" >
                                 </div>
-                            <button class="loginButton">Login in</button>
+                                <div id="login-hint" class="textboxHint"></div>
+                                <div class="textbox">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="pwd" placeholder="Password" name="password" >
+                                </div>
+                                <div id="pwd-hint" class="textboxHint"></div>
+                            </div>
+                            <button class="loginButton" onclick="validateAndSignIn()">Login in</button>
                         </div>
-                    </form>
+                     </div>    
+                </form>      
             </nav>
             
     ';
@@ -81,20 +87,20 @@ if (empty($_SESSION['email'])) {
     if (empty($_SESSION['email']) || $_SESSION['id'] != $id && $_SESSION['role'] != 'admin') {
         echo '
                 <div>
-                    <img class="profilePhoto" src="' . $linkToPhoto . '" alt="Profile photo">
+                    <img class="profilePhoto" src="../' . $linkToPhoto . '" alt="Profile photo">
                 </div>
                 <form class="profileForm">
                     <h1>Information</h1>
                     <div class="field">
-                        <label>First name</label>
+                        <label for="first_name">First name</label>
                     <input class="profileInput" type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" readonly>
                     </div>
                     <div class="field">
-                        <label>Last name</label>
+                        <label for="last_name">Last name</label>
                         <input class="profileInput" type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" readonly>
                     </div>
                     <div class="field">
-                        <label>E-mail</label>
+                        <label for="email">E-mail</label>
                         <input class="profileInput" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '" readonly>
                     </div>
                 </form>
@@ -106,7 +112,7 @@ if (empty($_SESSION['email'])) {
                 echo '<div>
                         <div>
                             <div>
-                                <img src="' . $linkToPhoto . '" alt="Profile photo" class="profilePhoto">
+                                <img src="../' . $linkToPhoto . '" alt="Profile photo" class="profilePhoto">
                             </div>
                             <form action="uploadController.php?id=' . $id . '" method="post" enctype="multipart/form-data" class="uploadForm">
                                 Select image to upload:
@@ -115,23 +121,23 @@ if (empty($_SESSION['email'])) {
                             </form>
                         </div>
                         <div>
-                            <form action="controllers/updateProfileController.php" method="post" class="profileForm">
+                            <form action="../controllers/updateProfileController.php" method="post" class="profileForm">
                             <h1>Information</h1>
                                 <div>
                                 <div class="field">
-                                    <label>First name</label>
+                                    <label for="first_name">First name</label>
                                     <input class="profileInput" type="text" placeholder="First name" name="firstName" value="' . $row['first_name'] . '" required>
                                 </div>
                                 <div class="field">
-                                    <label>Last name</label>
+                                    <label for="last_name">Last name</label>
                                     <input class="profileInput" type="text" placeholder="Last name" name="lastName" value="' . $row['last_name'] . '" required>
                                 </div>
                                 <div class="field">
-                                    <label>E-mail   </label>
+                                    <label for="email">E-mail   </label>
                                     <input class="profileInput" id="email" type="text" placeholder="E-mail" name="email" value="' . $row['email'] . '"  required>
                                 </div>
                                 <div class="field">
-                                    <label>Password</label>
+                                    <label for="pwd">Password</label>
                                     <input class="profileInput" id="password" type="password" placeholder="Password" name="password" value="' . $row['password'] . '" required>
                                 </div>';
                 if ($_SESSION['role'] == 'admin') {
@@ -154,11 +160,11 @@ if (empty($_SESSION['email'])) {
                 }
                 echo '<button type="submit" class="uploadButton">Edit</button>  
                             <button class="uploadButton">
-                                <a href="deleteProfileController.php?id=' . $id . '">Delete</a>
+                            <a href="../controllers/deleteProfileController.php?id=' . $id . '">Delete</a>   
                             </button>            
                     </div>';
             } else {
-                echo "<div><p>Update is wrong:(</p><a href='index.php'>Main page</a></div>";
+                echo "<div><p>Update is wrong:(</p><a href='../index.php'>Main page</a></div>";
             }
             echo '</div>
     </div>';

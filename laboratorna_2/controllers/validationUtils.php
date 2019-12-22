@@ -1,8 +1,9 @@
 <?php
 
-function test_input($data) {
+function isValid($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-    return $data;
+    return !empty($data);
 }
