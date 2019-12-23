@@ -4,9 +4,7 @@ function validateAndSignUp() {
     }
 }
 
-
 function validateRegLogin() {
-
     let emailField = document.getElementById("reg-login");
     let usersEmail = emailField.value;
     let hint = document.getElementById("reg-login-hint");

@@ -1,5 +1,5 @@
 <?php
-require_once 'route/api.php';
+//require_once 'route/api.php';
 
 session_start();
 ?>
@@ -96,8 +96,9 @@ if (empty($_SESSION['email'])) {
                             <button class="button-up" onclick="validateAndSignUp()">Sign Up</button>
                         </div>
                      </div>    
-                </form>  
-            </nav>';
+                </form>
+            </nav>
+            ';
 } else {
     echo ' <nav class="buttonsPanel">
             <img class="logo" src=assets/img/logo1.png alt="VA">
@@ -168,6 +169,32 @@ if (!empty($_SESSION['email']) && $_SESSION['role'] == 'admin') {
                      </div>  ';
 }
 ?>
+<script>
+    // Отправка данных на сервер
+    $('#form').trigger('reset');
+    $(function() {
+        'use strict';
+        $('#openModalUp').on('signUpButton', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'send.php',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: new FormData(this),
+                success: function(msg) {
+                    console.log(msg);
+                    if (msg == 'ok') {
+                        alert('Сообщение отправлено');
+                        $('#form').trigger('reset'); // очистка формы
+                    } else {
+                        alert('Ошибка');
+                    }
+                }
+            });
+        });
+    });
+</script>
 <footer class="footer">
     © Copyright VA 2019
 </footer>
