@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/e99543c0a3.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/d59b846578.js"></script>
+    <meta charset="UTF-8">
+    <title>Modal</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+<a href="#openModal">Open Modal</a>
+
+<form action="../authController.php" method="post">
+    <a href="#openModal">Login</a>
+    <div id="openModal" class="modalDialog">
+        <div>
+            <a href="#close" title="Close" class="close">X</a>
+            <div class="login-box">
+                <h1>Login</h1>
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Username" name="" value="">
+                </div>
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password" name="" value="">
+                </div>
+                <input class="button-in" type="button" name="" value="Sign in">
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>
